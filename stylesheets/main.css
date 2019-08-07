@@ -1,0 +1,236 @@
+/***************************************************************************
+    CSS Reset
+   ***************************************************************************/
+
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+	display: block;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+/***************************************************************************
+    Estrutura Básica
+   ***************************************************************************/
+
+body {
+	line-height: 1;
+	background: #333 url("../images/bg.jpg") 0 0 repeat;
+	font: 16px arial,verdana,tahoma,sans-serif;
+	color: #CECECE;
+}
+
+.main {
+	width: 100%;
+	margin: 0 auto;
+}
+
+.organograma {
+	margin: 0 auto;
+}
+
+/***************************************************************************
+    Título da Página
+   ***************************************************************************/
+
+.wrap-titulo-pagina > h1 {
+	font-size: 28px;
+	margin: 20px auto;
+	text-align: center;
+	padding: 3px 0;
+}
+
+/***************************************************************************
+    Botões de Zoom
+***************************************************************************/
+
+.organograma .zoom {
+	cursor: pointer;
+	height: 16px;
+	width: 16px;
+	margin: 0 auto;
+	border-radius: 8px;
+	background: #FFA500;
+	position: relative;
+}
+
+.organograma .zoom > .barrahorizontal,
+.organograma .zoom > .barravertical {
+	background: #000;
+	position: absolute;
+}
+
+.organograma .zoom > .barrahorizontal {
+	right: 2px;
+	left: 2px;
+
+	bottom: 7px;
+	top: 7px;
+}
+
+.organograma .zoom > .barravertical {
+	right: 7px;
+	left: 7px;
+
+	bottom: 2px;
+	top: 2px;
+
+	display:none;
+}
+
+.organograma .zoom.mais > .barravertical{
+	display: block;
+}
+
+/***************************************************************************
+     Ramos
+***************************************************************************/
+
+.organograma .organograma-exemplo-base ul,
+.organograma .organograma-exemplo-base {
+	margin: 0;
+	padding-top: 40px;
+	position: relative;
+}
+
+.organograma ul.hide {
+	display: none;
+}
+
+/***************************************************************************
+    Infos dos blocos
+   ***************************************************************************/
+
+.organograma .nome {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.organograma .cargo {
+	font-style: italic;
+}
+
+/***************************************************************************
+    Estrutura
+***************************************************************************/
+
+.organograma > .organograma-exemplo-base li {
+	z-index: -1;
+}
+
+.organograma li {
+	float: left;
+	text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 40px 0 0;
+}
+
+/***************************************************************************
+    Estrutura - Conectores
+***************************************************************************/
+
+.organograma li:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 50%;
+	border-top: 1px solid #DBDBDB; /* Renderizado como zero no IE8 */
+	width: 50%; /* Causador do bug da barra direita no IE8 */
+	height: 40px;
+}
+
+.organograma li:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 50%;
+	left: 50%;
+	border-left: 1px solid #DBDBDB;
+	border-top: 1px solid #DBDBDB;
+	width: 50%;
+	height: 40px;
+}
+
+/* Remoção dos conectores da esquerda-direita dos elementos sem nenhum irmão */
+
+.organograma .filho-unico:after {
+	display: none;
+}
+
+.organograma .filho-unico:before {
+	display: none;
+}
+
+/* Remoção de espaço do topo de filho único */
+
+.organograma .filho-unico {
+	padding: 0;
+}
+
+/* Remoção do conector esquerdo do primeiro filho e conector direito do último */
+
+.organograma li:first-child:before {
+	border: 0 none;
+}
+
+.organograma .ultimo-filho:after {
+	border: 0 none;
+}
+
+/* Retorno do conector vertical para os últimos nós. */
+
+.organograma .ultimo-filho:before {
+	border-right: 1px solid #DBDBDB;
+	border-radius: 0 5px 0 0;
+}
+
+.organograma li:first-child:after {
+	border-radius: 5px 0 0 0;
+}
+
+/* Retorno do conector dos pais */
+
+.organograma ul ul:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 50%;
+	border-left: 1px solid #DBDBDB;
+	width: 0;
+	height: 40px;
+}
+
+/* Demais estilos */
+
+.organograma .wrap-infos {
+	border: 1px solid #DBDBDB;
+	padding: 5px;
+	display: inline-block;
+	border-radius: 5px;
+	cursor: default;
+	margin: 0 5px;
+}
+
+.organograma .wrap-infos-padrao {
+	min-height: 50px;
+	width: 200px;
+}
+
+.organograma .hightlight {
+	border: 1px solid #EED30B;
+}
+
+.organograma .organograma-exemplo-base > li:first-child {
+	margin-bottom: 10px;
+}
